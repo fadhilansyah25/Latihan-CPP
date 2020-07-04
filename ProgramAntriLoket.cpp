@@ -82,6 +82,7 @@ main()
     cout<<"1. Tambah Antrian"<<endl;
     cout<<"2. Panggil Antrian"<<endl;
     cout<<"3. Tampilkan Antrian Tersisa"<<endl;
+    cout<<"4. Keluar dari program"<<endl;
     cout<<"============================================="<<endl;
     cout<<"masukan pilihan : ";cin>>pilihan;
 
@@ -103,7 +104,9 @@ main()
         cetak_antrian(&tail);
         getch();
         goto menu;
+    case 4:
+        exit(0);
     default:
-        break;
+        goto menu;
     }
 }
