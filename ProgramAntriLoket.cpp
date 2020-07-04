@@ -32,7 +32,7 @@ void tambah_antrian(Node **tail, int nomer_antrian)
 main()
 {
     int pilihan, nomer_antrian = 1;
-    Node *tail; 
+    Node *tail = NULL; 
 
     menu:
     system("cls");
