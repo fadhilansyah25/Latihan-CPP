@@ -28,6 +28,27 @@ void tambah_antrian(Node **tail, int nomer_antrian)
     }
 }
 
+// fungsi mencetak sisa antrian
+void cetak_antrian(Node **tail)
+{
+    Node *bantu = new Node();
+    if(*tail == NULL){
+        cout<<"Antrian Sudah habis ....."<<endl;
+    }else
+    {
+        bantu = *tail;
+        while (bantu->next != NULL){
+            cout<<"Nama Pengantri : "<<bantu->Name<<endl;
+            cout<<"Nomer Antrian : "<<bantu->Queue_Number<<endl;
+            cout<<endl;
+            bantu = bantu->next;
+        }
+        cout<<"Nama Pengantri : "<<bantu->Name<<endl;
+        cout<<"Nomer Antrian : "<<bantu->Queue_Number<<endl;
+    }
+    
+}
+
 // fungsi utama
 main()
 {
@@ -51,6 +72,11 @@ main()
         system("cls");
         tambah_antrian(&tail, nomer_antrian);
         nomer_antrian++;
+        getch();
+        goto menu;
+    case 3:
+        system("cls");
+        cetak_antrian(&tail);
         getch();
         goto menu;
     default:
