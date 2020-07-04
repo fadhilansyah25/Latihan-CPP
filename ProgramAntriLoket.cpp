@@ -1,5 +1,6 @@
 #include<iostream>
-#include<string.h>
+#include<conio.h>
+#include<string>
 using namespace std;
 // pembuatan simpul 
 struct Node
@@ -10,11 +11,12 @@ struct Node
 };
 
 // fungsi menambah antrian
-void tambah_antrian(Node **tail, int nomer_antrian, string nama)
+void tambah_antrian(Node **tail, int nomer_antrian)
 {
     Node *baru = new Node(), *bantu = new Node();
-    baru->Name = nama;
+    cout<<"Masukan Nama Pengantri : ";cin>>baru->Name;
     baru->Queue_Number = nomer_antrian;
+
     if (*tail == NULL){
         *tail = baru;
     }else
@@ -30,11 +32,10 @@ void tambah_antrian(Node **tail, int nomer_antrian, string nama)
 main()
 {
     int pilihan, nomer_antrian = 1;
-    string nama;
     Node *tail; 
 
     menu:
-    system("CLS");
+    system("cls");
     cout<<"============================================="<<endl;
     cout<<"Program Antri Loket Pembayaran Mahasiswa"<<endl;
     cout<<"============================================="<<endl;
@@ -47,12 +48,11 @@ main()
     switch (pilihan)
     {
     case 1:
-        system("CLS");
-        cout<<"Masukan nama : ";cin>>nama;
+        system("cls");
+        tambah_antrian(&tail, nomer_antrian);
         nomer_antrian++;
-        tambah_antrian(&tail, nomer_antrian, nama);
+        getch();
         goto menu;
-        break;
     default:
         break;
     }
