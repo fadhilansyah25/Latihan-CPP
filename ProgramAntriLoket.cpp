@@ -1,6 +1,7 @@
 #include<iostream>
 #include<conio.h>
 #include<string>
+#include<stdlib.h>
 using namespace std;
 // pembuatan simpul 
 struct Node
@@ -28,6 +29,25 @@ void tambah_antrian(Node **tail, int nomer_antrian)
     }
 }
 
+void panggil_antrian(Node **tail)
+{
+    Node *bantu = new Node();
+    bantu = *tail;
+    if(*tail == NULL){
+        cout<<"Antrian Sudah habis ....."<<endl;
+    }
+    else if(bantu->next == NULL){
+        free(bantu);
+        *tail = NULL;
+        cout<<"Antrian telah dipanggil";
+    }
+    else{
+        *tail = bantu->next;
+        free(bantu);
+        cout<<"Antrian telah dipanggil";
+    }
+}
+
 // fungsi mencetak sisa antrian
 void cetak_antrian(Node **tail)
 {
@@ -46,7 +66,6 @@ void cetak_antrian(Node **tail)
         cout<<"Nama Pengantri : "<<bantu->Name<<endl;
         cout<<"Nomer Antrian : "<<bantu->Queue_Number<<endl;
     }
-    
 }
 
 // fungsi utama
@@ -72,6 +91,11 @@ main()
         system("cls");
         tambah_antrian(&tail, nomer_antrian);
         nomer_antrian++;
+        getch();
+        goto menu;
+    case 2:
+        system("cls");
+        panggil_antrian(&tail);
         getch();
         goto menu;
     case 3:
