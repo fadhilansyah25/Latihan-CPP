@@ -85,7 +85,8 @@ void panggil_Antrian_Acak(Node **tail)
 
     if(bantu != NULL && bantu->Queue_Number == longkap){
         *tail = bantu->next;
-        cout<<bantu->Name<<" Antrian telah dipanggil\n";
+        cout<<"Antrian dengan nama "<<bantu->Name<<" dengan nomer antrian "
+        <<bantu->Queue_Number<<" Telah dipanggil\n";
         delete bantu;
     }
     else if (bantu != NULL && bantu->Queue_Number != longkap)
@@ -97,10 +98,12 @@ void panggil_Antrian_Acak(Node **tail)
         }
 
         if(bantu == NULL){
-            return;
+            cout<<"Tidak ada nomer antrian yang cocok\n";
         }
         else
         {
+            cout<<"Antrian dengan nama "<<bantu->Name<<" dengan nomer antrian "
+            <<bantu->Queue_Number<<" Telah dipanggil\n";
             sebelum->next = bantu->next;
             delete bantu;
         }
@@ -113,8 +116,14 @@ main()
 {
     int pilihan, nomer_antrian = 1;
     Node *tail = NULL; 
+
+    // Nama : Muhammad Fadil Ardiansyah
+    // NIM : 181011400596
+    // Kelas : 04TPLP005
+
     menu:
     system("cls");
+    cout<<"Nama : Muhammad Fadil Ardiansyah\nNIM : 181011400596 \nKelas : 04TPLP005\n";
     cout<<"============================================="<<endl;
     cout<<"Program Otomatis Nomor Antrian Loket Pembayaran Mahasiswa"<<endl;
     cout<<"============================================="<<endl;
