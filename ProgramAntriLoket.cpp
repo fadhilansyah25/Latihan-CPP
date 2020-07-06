@@ -40,14 +40,12 @@ void panggil_antrian(Node **tail)
         cout<<"Antrian Sudah habis ....."<<endl;
     }
     else if(bantu->next == NULL){
-        cout<<"Antrian telah dipanggil\n";
         cout<<"Antrian dengan Nama : "<<bantu->Name<<"\nDengan nomor Antrian : "<<bantu->Queue_Number<<endl
         <<"\nTelah dipanggil";
         delete bantu;
         *tail = NULL;
     }
     else{
-        cout<<"Antrian telah dipanggil\n";
         cout<<"Antrian dengan Nama : "<<bantu->Name<<"\nDengan nomor Antrian : "<<bantu->Queue_Number<<endl
         <<"\nTelah dipanggil";
         *tail = bantu->next;
@@ -96,19 +94,11 @@ void panggil_Antrian_Acak(Node **tail)
             sebelum = bantu;
             bantu = bantu->next;
         }
-
-        if(bantu == NULL){
-            cout<<"Tidak ada nomer antrian yang cocok\n";
-        }
-        else
-        {
-            cout<<"Antrian dengan nama "<<bantu->Name<<" dengan nomer antrian "
-            <<bantu->Queue_Number<<" Telah dipanggil\n";
-            sebelum->next = bantu->next;
-            delete bantu;
-        }
+        cout<<"Antrian dengan nama "<<bantu->Name<<" dengan nomer antrian "
+        <<bantu->Queue_Number<<" Telah dipanggil\n";
+        sebelum->next = bantu->next;
+        delete bantu;
     }
-    
 }
 
 // fungsi utama
@@ -128,8 +118,8 @@ main()
     cout<<"Program Otomatis Nomor Antrian Loket Pembayaran Mahasiswa"<<endl;
     cout<<"============================================="<<endl;
     cout<<"1. Tambah Antrian"<<endl;
-    cout<<"2. Panggil Antrian Paling Lama menunggu"<<endl;
-    cout<<"3. Tampilkan Antrian Tersisa"<<endl;
+    cout<<"2. Tampilkan Antrian Tersisa"<<endl;
+    cout<<"3. Panggil Antrian Paling Depan"<<endl;
     cout<<"4. Panggil Antrian Secara Random"<<endl;
     cout<<"5. Keluar dari program"<<endl;
     cout<<"============================================="<<endl;
@@ -145,12 +135,12 @@ main()
         goto menu;
     case 2:
         system("cls");
-        panggil_antrian(&tail);
+        cetak_antrian(&tail);
         getch();
         goto menu;
     case 3:
         system("cls");
-        cetak_antrian(&tail);
+        panggil_antrian(&tail);
         getch();
         goto menu;
     case 4:
