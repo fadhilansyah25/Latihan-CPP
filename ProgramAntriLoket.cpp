@@ -12,13 +12,13 @@ struct Node
 };
 
 // Prototype Fungsi
-void tambah_antrian(Node **tail, int nomer_antrian);
-void panggil_antrian(Node **tail);
-void cetak_antrian(Node **tail);
-void panggil_Antrian_Acak(Node **tail);
+void tambah_antrian(Node **Head, int nomer_antrian);
+void panggil_antrian(Node **Head);
+void cetak_antrian(Node **Head);
+void panggil_Antrian_Acak(Node **Head);
 
 // fungsi menambah antrian
-void tambah_antrian(Node **tail, int nomer_antrian)
+void tambah_antrian(Node **Head, int nomer_antrian)
 {
     Node *baru = new Node(), *bantu = new Node();
     cout<<"*jangan input dengan spasi\n";
@@ -26,11 +26,11 @@ void tambah_antrian(Node **tail, int nomer_antrian)
     baru->Queue_Number = nomer_antrian;
     baru->next = NULL;
 
-    if (*tail == NULL){
-        *tail = baru;
+    if (*Head == NULL){
+        *Head = baru;
     }else
     {
-        bantu = *tail;
+        bantu = *Head;
         while (bantu->next != NULL)
         bantu = bantu->next;
         bantu->next = baru;
@@ -38,40 +38,40 @@ void tambah_antrian(Node **tail, int nomer_antrian)
 }
 
 // Fungsi mengeluarkan antrian atau memanggil antrian
-void panggil_antrian(Node **tail)
+void panggil_antrian(Node **Head)
 {
     Node *bantu;
-    bantu = *tail;
-    if(*tail == NULL){
+    bantu = *Head;
+    if(*Head == NULL){
         cout<<"Antrian Sudah habis ....."<<endl;
     }
     else if(bantu->next == NULL){
         cout<<"Antrian dengan Nama : "<<bantu->Name<<"\nDengan nomor Antrian : "<<bantu->Queue_Number<<endl
         <<"\nTelah dipanggil";
         delete bantu;
-        *tail = NULL;
+        *Head = NULL;
     }
     else{
         cout<<"Antrian dengan Nama : "<<bantu->Name<<"\nDengan nomor Antrian : "<<bantu->Queue_Number<<endl
         <<"\nTelah dipanggil";
-        *tail = bantu->next;
+        *Head = bantu->next;
         delete bantu;
     }
-    cetak_antrian(tail);
+    cetak_antrian(Head);
 }
 
 // fungsi mencetak sisa antrian
-void cetak_antrian(Node **tail)
+void cetak_antrian(Node **Head)
 {
     Node *bantu;
-    if(*tail == NULL){
+    if(*Head == NULL){
         cout<<"Antrian Sudah habis ....."<<endl;
     }else
     {
         cout<<"+---------------------------------------+"<<endl;
         cout<<"| Nama pengantri\t| No. Antrian\t|"<<endl;
         cout<<"+---------------------------------------+"<<endl;
-        bantu = *tail;
+        bantu = *Head;
         while (bantu->next != NULL){
             cout<<"| "<<bantu->Name<<"\t\t\t| "<<bantu->Queue_Number<<"\t\t|"<<endl;
             bantu = bantu->next;
@@ -82,16 +82,16 @@ void cetak_antrian(Node **tail)
 }
 
 // fungsi melongkap antrian
-void panggil_Antrian_Acak(Node **tail)
+void panggil_Antrian_Acak(Node **Head)
 {
     int longkap;
     Node *bantu, *sebelum;
-    bantu = *tail;
-    cetak_antrian(tail);
+    bantu = *Head;
+    cetak_antrian(Head);
     cout<<"Masukan nomer antrian : ";cin>>longkap;
 
     if(bantu != NULL && bantu->Queue_Number == longkap){
-        *tail = bantu->next;
+        *Head = bantu->next;
         cout<<"Antrian dengan nama "<<bantu->Name<<" dengan nomer antrian "
         <<bantu->Queue_Number<<" Telah dipanggil\n";
         delete bantu;
@@ -114,7 +114,7 @@ void panggil_Antrian_Acak(Node **tail)
 main()
 {
     int pilihan, nomer_antrian = 1;
-    Node *tail = NULL; 
+    Node *Head = NULL; 
 
     // Nama : Muhammad Fadil Ardiansyah
     // NIM : 181011400596
@@ -138,23 +138,23 @@ main()
     {
     case 1:
         system("cls");
-        tambah_antrian(&tail, nomer_antrian);
+        tambah_antrian(&Head, nomer_antrian);
         nomer_antrian++;
         getch();
         goto menu;
     case 2:
         system("cls");
-        cetak_antrian(&tail);
+        cetak_antrian(&Head);
         getch();
         goto menu;
     case 3:
         system("cls");
-        panggil_antrian(&tail);
+        panggil_antrian(&Head);
         getch();
         goto menu;
     case 4:
         system("cls");
-        panggil_Antrian_Acak(&tail);
+        panggil_Antrian_Acak(&Head);
         getch();
         goto menu;
     case 5:
