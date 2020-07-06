@@ -124,7 +124,7 @@ main()
     system("cls");
     cout<<"Nama : Muhammad Fadil Ardiansyah\nNIM : 181011400596 \nKelas : 04TPLP005\n";
     cout<<"============================================="<<endl;
-    cout<<"Program Otomatis Nomor Antrian Loket Pembayaran Mahasiswa"<<endl;
+    cout<<"Program Nomor Antrian Otomatis Loket Pembayaran Mahasiswa"<<endl;
     cout<<"============================================="<<endl;
     cout<<"1. Tambah Antrian"<<endl;
     cout<<"2. Cetak Tersisa"<<endl;
