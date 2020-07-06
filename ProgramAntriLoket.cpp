@@ -11,6 +11,12 @@ struct Node
     struct Node *next;
 };
 
+// Prototype Fungsi
+void tambah_antrian(Node **tail, int nomer_antrian);
+void panggil_antrian(Node **tail);
+void cetak_antrian(Node **tail);
+void panggil_Antrian_Acak(Node **tail);
+
 // fungsi menambah antrian
 void tambah_antrian(Node **tail, int nomer_antrian)
 {
@@ -51,6 +57,7 @@ void panggil_antrian(Node **tail)
         *tail = bantu->next;
         delete bantu;
     }
+    cetak_antrian(tail);
 }
 
 // fungsi mencetak sisa antrian
@@ -61,15 +68,16 @@ void cetak_antrian(Node **tail)
         cout<<"Antrian Sudah habis ....."<<endl;
     }else
     {
+        cout<<"+---------------------------------------+"<<endl;
+        cout<<"| Nama pengantri\t| No. Antrian\t|"<<endl;
+        cout<<"+---------------------------------------+"<<endl;
         bantu = *tail;
         while (bantu->next != NULL){
-            cout<<"Nama Pengantri : "<<bantu->Name<<endl;
-            cout<<"Nomer Antrian : "<<bantu->Queue_Number<<endl;
-            cout<<endl;
+            cout<<"| "<<bantu->Name<<"\t\t\t| "<<bantu->Queue_Number<<"\t\t|"<<endl;
             bantu = bantu->next;
         }
-        cout<<"Nama Pengantri : "<<bantu->Name<<endl;
-        cout<<"Nomer Antrian : "<<bantu->Queue_Number<<endl;
+        cout<<"| "<<bantu->Name<<"\t\t\t| "<<bantu->Queue_Number<<"\t\t|"<<endl;
+        cout<<"+---------------------------------------+"<<endl;
     }
 }
 
@@ -79,6 +87,7 @@ void panggil_Antrian_Acak(Node **tail)
     int longkap;
     Node *bantu, *sebelum;
     bantu = *tail;
+    cetak_antrian(tail);
     cout<<"Masukan nomer antrian : ";cin>>longkap;
 
     if(bantu != NULL && bantu->Queue_Number == longkap){
@@ -118,7 +127,7 @@ main()
     cout<<"Program Otomatis Nomor Antrian Loket Pembayaran Mahasiswa"<<endl;
     cout<<"============================================="<<endl;
     cout<<"1. Tambah Antrian"<<endl;
-    cout<<"2. Tampilkan Antrian Tersisa"<<endl;
+    cout<<"2. Cetak Tersisa"<<endl;
     cout<<"3. Panggil Antrian Paling Depan"<<endl;
     cout<<"4. Panggil Antrian Secara Random"<<endl;
     cout<<"5. Keluar dari program"<<endl;
