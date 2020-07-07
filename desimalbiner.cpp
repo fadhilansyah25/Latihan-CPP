@@ -42,6 +42,7 @@ void pop(STACK *s){
 	}
 }
 
+// function main
 main()
 {
 	STACK tumpukan;
