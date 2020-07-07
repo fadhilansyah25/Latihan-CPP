@@ -52,6 +52,7 @@ bool check(STACK tumpukan, string x, int n)
 		return false;
 }
 
+// fungsi main
 main(){
 	string kata;
 	char pilihan;
